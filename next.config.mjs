@@ -17,12 +17,6 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
-  env: {
-    DATABASE_URL: "",
-    NEXTAUTH_SECRET: "p+cUbEn6GyI2nCYK8cdBW/7BYDRWl15OiR6kxA+i+EM=",
-    DISCORD_CLIENT_ID: "1143659512717385829",
-    DISCORD_CLIENT_SECRET: "NsEHJADXChcaWi-TVdZYtsdlAZNrXYAR",
-  },
 };
 
 export default config;
