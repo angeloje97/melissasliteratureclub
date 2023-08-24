@@ -2,4 +2,6 @@ interface NavbarProperties {
   className: string;
 }
 
-const Navbar = () => {};
+const Navbar = () => {
+  return <></>;
+};
