@@ -15,9 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div className="container mx-auto flex flex-row justify-end gap-3 p-2">
-          <Navbar />
-        </div>
+        <Navbar />
       </main>
     </>
   );

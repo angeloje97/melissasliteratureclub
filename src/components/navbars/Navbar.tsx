@@ -7,7 +7,7 @@ interface NavbarProperties {
 const Navbar = () => {
   return (
     <>
-      <div>
+      <div className="container mx-auto flex flex-row justify-end gap-3 p-2">
         <SignInOutButton />
       </div>
     </>
