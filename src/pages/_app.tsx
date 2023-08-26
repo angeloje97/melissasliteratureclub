@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import store from "~/store";
 import { type AppType } from "next/app";
 import { api } from "~/utils/api";
+import Navbar from "~/components/navbars/Navbar";
 import "~/styles/globals.css";
 
 const MyApp: AppType<{ session: Session | null }> = ({
@@ -13,7 +14,10 @@ const MyApp: AppType<{ session: Session | null }> = ({
   return (
     <SessionProvider session={session}>
       <Provider store={store}>
-        <Component {...pageProps} />
+        <>
+          <Navbar />
+          <Component {...pageProps} />
+        </>
       </Provider>
     </SessionProvider>
   );
