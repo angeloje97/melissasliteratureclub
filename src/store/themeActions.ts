@@ -1,10 +1,9 @@
-import { ThemeState, themeActions } from "./theme";
-import { Dispatch } from "react";
+import { AppDispatch } from ".";
+import { themeActions } from "./theme";
 import { themeState } from "./theme";
-import { CaseReducerActions } from "@reduxjs/toolkit";
 
 export const setLightMode = (lightMode: boolean) => {
-  return (dispatch) => {
+  return (dispatch: AppDispatch) => {
     dispatch(
       themeActions.update({
         currentTheme: themeState(lightMode),
