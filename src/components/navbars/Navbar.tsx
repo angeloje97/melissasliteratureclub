@@ -3,9 +3,9 @@ import { signIn, signOut, useSession } from "next-auth/react";
 const Navbar = () => {
   return (
     <>
-      <div className=" container mx-auto flex flex-row items-center justify-between rounded-b-md border-2 border-t-0">
+      <div className=" container mx-auto flex flex-row items-center justify-between rounded-b-md border-2 border-t-0 pl-2">
         <p>Navigation Buttons</p>
-        <p>Page Name</p>
+        <p className="text-2xl">Melissa's Literature Club</p>
         <SignInOutButton />
       </div>
     </>
