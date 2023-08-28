@@ -1,11 +1,12 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 
 const Navbar = () => {
+  const title = "Melissa's Literature Club";
   return (
     <>
       <div className=" container mx-auto flex flex-row items-center justify-between rounded-b-md border-2 border-t-0 pl-2">
         <p>Navigation Buttons</p>
-        <p className="text-2xl">Melissa's Literature Club</p>
+        <p className="text-2xl">{title}</p>
         <SignInOutButton />
       </div>
     </>
