@@ -1,8 +1,8 @@
 type BookReviewData = {
-  id: String;
-  userId: String;
-  bookId: String;
-  review: String;
+  id: string;
+  userId: string;
+  bookId: string;
+  review: string;
   rating: number;
 };
 
