@@ -14,13 +14,13 @@ export default function Home() {
       <main className="container mx-auto">
         <BookReviewEditor
           onSave={(data) => {
-            console.log(`Saving ${data}`);
+            console.log(`Saving ${data.title}`);
           }}
           onDelete={(data) => {
-            console.log(`Deleting ${data}`);
+            console.log(`Deleting ${data.title}`);
           }}
           onPublish={(data) => {
-            console.log(`Publishing ${data}`);
+            console.log(`Publishing ${data.title}`);
           }}
         />
       </main>
