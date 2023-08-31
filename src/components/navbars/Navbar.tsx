@@ -4,7 +4,7 @@ const Navbar = () => {
   const title = "Melissa's Literature Club";
   return (
     <>
-      <div className=" container mx-auto flex flex-row items-center justify-between rounded-b-md border-2 border-t-0 pl-2">
+      <div className=" container mx-auto flex flex-row items-center justify-between rounded border-2 pl-2">
         <p>Navigation Buttons</p>
         <p className="text-2xl">{title}</p>
         <SignInOutButton />

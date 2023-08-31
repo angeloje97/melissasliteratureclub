@@ -1,4 +1,4 @@
-type BookReviewData = {
+export type BookReviewData = {
   id: string;
   userId: string;
   bookId: string;
