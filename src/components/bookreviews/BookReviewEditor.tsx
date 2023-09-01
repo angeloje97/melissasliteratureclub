@@ -14,7 +14,7 @@ const BookReviewEditor = ({
   onPublish,
   originalData,
 }: BookReviewEditorData) => {
-  const [reviewData, setReviewKey] = useObject(originalData || defaultData);
+  const [reviewData, setReviewKey] = useObject(originalData ?? defaultData);
   const [bookName, setBookName] = useState("");
   const inputClass = "w-full rounded border-2 p-1 mt-2";
   const buttonClass = "rounded border-2 p-2";
