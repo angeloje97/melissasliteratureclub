@@ -70,6 +70,7 @@ model BookReview {
     id String @id @default(cuid()) @map("_id")
     userId String
     bookId String
+    title String
     review String
     rating Int
 }
