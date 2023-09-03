@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { defaultData, type BookReviewData } from "./BookReview";
 import useObject from "~/resources/customhooks/useObject";
+import RequiresLogin from "../requirements/RequiresLogin";
 type BookReviewEditorData = {
   onSave: (data: BookReviewData) => void;
   onDelete: (data: BookReviewData) => void;
@@ -28,52 +29,54 @@ const BookReviewEditor = ({
   };
 
   return (
-    <form onSubmit={handleFormSubmission}>
-      <span className="flex gap-2">
-        <input
-          type="text"
-          className={`${inputClass} w-2/5`}
-          placeholder="Review Title"
-          id="title"
+    <RequiresLogin targetName="Book Review Editor">
+      <form onSubmit={handleFormSubmission}>
+        <span className="flex gap-2">
+          <input
+            type="text"
+            className={`${inputClass} w-2/5`}
+            placeholder="Review Title"
+            id="title"
+            onChange={(event) => {
+              setReviewKey("title", event.target.value);
+            }}
+            value={reviewData.title}
+          />
+          <input
+            type="search"
+            placeholder="Book Title"
+            className={`${inputClass} w-2/5`}
+            onChange={handleBookTitle}
+            value={bookName}
+          />
+          <input
+            className={`${inputClass} w-1/5`}
+            type="number"
+            min={0}
+            max={10}
+            step={0.01}
+            placeholder="Rating out of 5"
+            onChange={(event) => {
+              setReviewKey("rating", parseInt(event.target.value));
+            }}
+            value={reviewData.rating}
+          />
+        </span>
+        <textarea
+          className={`${inputClass}`}
+          rows={20}
           onChange={(event) => {
-            setReviewKey("title", event.target.value);
+            setReviewKey("review", event.target.value);
           }}
-          value={reviewData.title}
+          value={reviewData.review}
         />
-        <input
-          type="search"
-          placeholder="Book Title"
-          className={`${inputClass} w-2/5`}
-          onChange={handleBookTitle}
-          value={bookName}
-        />
-        <input
-          className={`${inputClass} w-1/5`}
-          type="number"
-          min={0}
-          max={10}
-          step={0.01}
-          placeholder="Rating out of 5"
-          onChange={(event) => {
-            setReviewKey("rating", parseInt(event.target.value));
-          }}
-          value={reviewData.rating}
-        />
-      </span>
-      <textarea
-        className={`${inputClass}`}
-        rows={20}
-        onChange={(event) => {
-          setReviewKey("review", event.target.value);
-        }}
-        value={reviewData.review}
-      />
-      <span className="flex justify-end gap-2">
-        <button className={buttonClass}>Delete</button>
-        <button className={buttonClass}>Save</button>
-        <button className={buttonClass}>Publish</button>
-      </span>
-    </form>
+        <span className="flex justify-end gap-2">
+          <button className={buttonClass}>Delete</button>
+          <button className={buttonClass}>Save</button>
+          <button className={buttonClass}>Publish</button>
+        </span>
+      </form>
+    </RequiresLogin>
   );
 };
 
