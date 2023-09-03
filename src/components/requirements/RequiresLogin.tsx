@@ -15,16 +15,13 @@ const RequiresLogin = ({
 }: RequiresLoginProps) => {
   const session = useSession();
 
+  const handleSignIn = () => void signIn();
+
   if (!session.data) {
     return (
       <div className="my-2 flex w-full items-center justify-center gap-3 rounded border-2 p-2">
         <p>{targetName && `${targetName} `}Requires Login</p>
-        <button
-          className="rounded border-2 p-2"
-          onClick={() => {
-            signIn();
-          }}
-        >
+        <button className="rounded border-2 p-2" onClick={handleSignIn}>
           Sign In
         </button>
       </div>
