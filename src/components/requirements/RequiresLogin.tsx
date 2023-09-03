@@ -5,13 +5,13 @@ import { ReactNode } from "react";
 type RequiresLoginProps = {
   children: ReactNode;
   targetName: string;
-  redirectAddress: string;
+  redirect: string;
 };
 
 const RequiresLogin = ({
   children,
   targetName = "",
-  redirectAddress = "",
+  redirect = "",
 }: RequiresLoginProps) => {
   const session = useSession();
 

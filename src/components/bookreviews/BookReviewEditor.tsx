@@ -29,7 +29,7 @@ const BookReviewEditor = ({
   };
 
   return (
-    <RequiresLogin targetName="Book Review Editor">
+    <RequiresLogin targetName="Book Review Editor" redirect="/">
       <form onSubmit={handleFormSubmission}>
         <span className="flex gap-2">
           <input
