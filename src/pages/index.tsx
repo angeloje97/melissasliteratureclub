@@ -2,8 +2,21 @@ import Head from "next/head";
 import { api } from "~/utils/api";
 import Navbar from "~/components/navbars/Navbar";
 import BookReviewEditor from "~/components/bookreviews/BookReviewEditor";
+import UserIcon from "~/components/users/UserIcon";
+import { useSession } from "next-auth/react";
 
 export default function Home() {
+  const session = useSession();
+  const user = session.data?.user;
+
+  let userIcon = <></>;
+
+  if (user) {
+    if (user.name && user.image) {
+      console.log(user);
+      userIcon = <UserIcon alias={user.name} id={user.id} image={user.image} />;
+    }
+  }
   return (
     <>
       <Head>
@@ -12,6 +25,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="container mx-auto">
+        {userIcon}
         <BookReviewEditor
           onSave={(data) => {
             console.log(`Saving ${data.title}`);

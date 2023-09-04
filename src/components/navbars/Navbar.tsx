@@ -1,11 +1,12 @@
 import { signIn, signOut, useSession } from "next-auth/react";
+import { IconHome, IconSearch } from "~/resources/icons/heroicons";
 
 const Navbar = () => {
   const title = "Melissa's Literature Club";
   return (
     <>
-      <div className=" container mx-auto flex flex-row items-center justify-between rounded border-2 pl-2">
-        <p>Navigation Buttons</p>
+      <div className=" container mx-auto flex flex-row items-center justify-between rounded border-2">
+        <NavigationButtons />
         <p className="text-2xl">{title}</p>
         <SignInOutButton />
       </div>
@@ -27,6 +28,19 @@ const SignInOutButton = () => {
         {label}
       </button>
     </div>
+  );
+};
+
+const NavigationButtons = () => {
+  return (
+    <span className="flex flex-row items-center justify-center gap-2 px-2 ">
+      <button>
+        <IconHome />
+      </button>
+      <button>
+        <IconSearch />
+      </button>
+    </span>
   );
 };
 
