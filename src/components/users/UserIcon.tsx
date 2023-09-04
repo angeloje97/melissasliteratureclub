@@ -11,7 +11,9 @@ const UserIcon = (userData: UserData) => {
   const router = useRouter();
   const handleClickUser = () => {
     if (!userData.id) return;
-    router.push(`/${userData.id}`).catch((reason) => {});
+    router.push(`/${userData.id}`).catch((reason) => {
+      console.log(`Could not push for ${userData.id} becasue ${reason}`);
+    });
   };
   return (
     <button
