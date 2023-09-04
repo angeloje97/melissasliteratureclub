@@ -9,9 +9,9 @@ export type UserData = {
 
 const UserIcon = (userData: UserData) => {
   const router = useRouter();
-  const handleClickUser = async () => {
+  const handleClickUser = () => {
     if (!userData.id) return;
-    await router.push(`/${userData.id}`);
+    router.push(`/${userData.id}`).catch((reason) => {});
   };
   return (
     <button
