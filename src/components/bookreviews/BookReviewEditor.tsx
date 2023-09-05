@@ -2,6 +2,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { defaultData, type BookReviewData } from "./BookReview";
 import useObject from "~/resources/customhooks/useObject";
 import RequiresLogin from "../requirements/RequiresLogin";
+import { useSession } from "next-auth/react";
 type BookReviewEditorData = {
   onSave: (data: BookReviewData) => void;
   onDelete: (data: BookReviewData) => void;
@@ -16,6 +17,8 @@ const BookReviewEditor = ({
   originalData,
 }: BookReviewEditorData) => {
   const [reviewData, setReviewKey] = useObject(originalData ?? defaultData);
+  const [updating, setUpdating] = useState(false);
+  const session = useSession();
   const [bookName, setBookName] = useState("");
   const inputClass = "w-full rounded border-2 p-1 mt-2";
   const buttonClass = "rounded border-2 p-2";
@@ -26,6 +29,14 @@ const BookReviewEditor = ({
 
   const handleFormSubmission = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!session.data) return;
+    if (updating) return;
+
+    setUpdating(true);
+
+    setReviewKey("userId", session.data.user.id);
+
+    setUpdating(false);
   };
 
   return (
