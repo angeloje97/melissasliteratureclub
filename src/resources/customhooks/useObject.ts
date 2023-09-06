@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { BookReviewData } from "~/components/bookreviews/BookReview";
 
-const handleValue = (obj: BookReviewData) => {};
-
 const useObject = <T>(initialData: T) => {
   const [data, setData] = useState(initialData);
 
