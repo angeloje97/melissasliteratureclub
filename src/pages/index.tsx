@@ -13,10 +13,10 @@ export default function Home() {
 
   if (user) {
     if (user.name && user.image) {
-      console.log(user);
       userIcon = <UserIcon alias={user.name} id={user.id} image={user.image} />;
     }
   }
+
   return (
     <>
       <Head>

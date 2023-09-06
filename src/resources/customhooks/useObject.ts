@@ -1,15 +1,24 @@
 import { useState } from "react";
+import { BookReviewData } from "~/components/bookreviews/BookReview";
+
+const handleValue = (obj: BookReviewData) => {};
 
 const useObject = <T>(initialData: T) => {
   const [data, setData] = useState(initialData);
 
-  const setFunction = <K extends keyof T>(key: K, value: T[K]) => {
+  const setFunction = <K extends keyof T>(
+    key: K,
+    value: T[K],
+    action?: (obj: T) => void
+  ) => {
     setData((prev) => {
-      return { ...prev, [key]: value };
+      const newObj = { ...prev, [key]: value };
+      if (action) action(newObj);
+      return newObj;
     });
   };
 
-  return [data, setFunction] as const;
+  return [data, setFunction, setData] as const;
 };
 
 export default useObject;

@@ -6,12 +6,14 @@ type RequiresLoginProps = {
   children: ReactNode;
   prefix: string;
   redirect: string;
+  requiresId?: boolean;
 };
 
 const RequiresLogin = ({
   children,
   prefix = "",
   redirect = "",
+  requiresId = false,
 }: RequiresLoginProps) => {
   const session = useSession();
 
@@ -20,7 +22,9 @@ const RequiresLogin = ({
       callbackUrl: redirect,
     });
 
-  if (!session.data) {
+  const valid = session.data && (!requiresId || session.data.user.id);
+
+  if (!valid) {
     return (
       <div className="my-2 flex w-full items-center justify-center gap-3 rounded border-2 p-2">
         <p>{prefix} Requires Login</p>

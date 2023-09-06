@@ -16,7 +16,9 @@ const BookReviewEditor = ({
   onPublish,
   originalData,
 }: BookReviewEditorData) => {
-  const [reviewData, setReviewKey] = useObject(originalData ?? defaultData);
+  const [reviewData, setReviewKey, setReviewData] = useObject(
+    originalData ?? defaultData
+  );
   const [updating, setUpdating] = useState(false);
   const session = useSession();
   const [bookName, setBookName] = useState("");
@@ -29,12 +31,17 @@ const BookReviewEditor = ({
 
   const handleFormSubmission = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     if (!session.data) return;
     if (updating) return;
-
     setUpdating(true);
 
-    setReviewKey("userId", session.data.user.id);
+    setReviewData((prev) => {
+      const current = { ...prev };
+      current.userId = session.data?.user.id;
+
+      return current;
+    });
 
     setUpdating(false);
   };
@@ -82,9 +89,15 @@ const BookReviewEditor = ({
           value={reviewData.review}
         />
         <span className="flex justify-end gap-2">
-          <button className={buttonClass}>Delete</button>
-          <button className={buttonClass}>Save</button>
-          <button className={buttonClass}>Publish</button>
+          <button className={buttonClass} type="reset">
+            Delete
+          </button>
+          <button className={buttonClass} type="submit">
+            Save
+          </button>
+          <button className={buttonClass} type="button">
+            Publish
+          </button>
         </span>
       </form>
     </RequiresLogin>
